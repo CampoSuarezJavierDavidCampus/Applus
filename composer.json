@@ -1,0 +1,18 @@
+{
+    "name": "jcampo1502/applus",
+    "description": "Prueba tecnica php empresa Applus",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jcampo1502\\Applus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CampoSuarezJavierDavidCampus",
+            "email": "campo.javier1502@gmail.com"
+        }
+    ],
+    "require": {}
+}
