@@ -34,6 +34,7 @@ class Router implements IRouter{
                 return $route->get_action();
             }
         }
-        return "page no found";
+        http_response_code(404); 
+        return null;
     }
 }

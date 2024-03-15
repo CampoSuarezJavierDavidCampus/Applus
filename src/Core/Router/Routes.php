@@ -6,7 +6,7 @@ use Core\Router\Route;
 
 return [
     Route::factory(
-        "", HTTP_Verbs::GET,
+        "api/product", HTTP_Verbs::GET,
         fn ()=>(new ProductController)->show()
     ),
     Route::factory(
