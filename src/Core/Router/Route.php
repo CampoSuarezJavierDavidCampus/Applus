@@ -2,11 +2,13 @@
 namespace Core\Router;
 
 use Core\Enums\HTTP_Verbs;
-use Core\Interfaces\IRoute;
+use Core\Interfaces\Router\IRoute;
 
 class Route implements IRoute{
     private string $_name;
-    private HTTP_Verbs $_verb;    
+    private HTTP_Verbs $_verb;   
+    private  $action ;   
+
     public function set_name(string $name):IRoute{
         $this->_name = $name;
         return $this;
@@ -17,13 +19,18 @@ class Route implements IRoute{
     }
 
     public function validate(string $name, HTTP_Verbs $verb): bool
-    {
+    {        
         return $this->_name == $name && $this->_verb == $verb;
     }
 
-    public function render(callable $callback):string{
-        //invocar a la funcion controller
-        return "OK";
+    public function set_action(callable $callback):IRoute{
+        $this->action = $callback;
+        return $this;
+    }
+
+    public function get_action(){
+
+        return call_user_func($this->action);
     }
 
 }

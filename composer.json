@@ -6,9 +6,9 @@
     "autoload": {
         "psr-4": {
             "Jcampo1502\\Applus\\": "src/",
-            "App\\":"src/App/",
-            "Core\\":"src/Core/",
-            "Infrastructure\\":"src/Infrastructure/"
+            "App\\":"src/App",
+            "Core\\":"src/Core",
+            "Infrastructure\\":"/src/Infrastructure"
 
         }
     },
