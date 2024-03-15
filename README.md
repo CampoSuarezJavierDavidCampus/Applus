@@ -27,7 +27,11 @@ composer install
 ```bash
 php -S localhost:8000
 ```
+- Ejecute `ng serve` en la carpeta Frontend para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.
+
 - Es importante aclarar que el proyecto fue escrito en php versión 8.3.3 y composer versión 2.7.2.
+
+- Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
 
 ## SQL DB
@@ -170,3 +174,6 @@ where
         AND datediff(p.fecha_devolucion,p.fecha_prestamo)>7
     )
 ```
+## Further help
+
+Para obtener más ayuda sobre Angular CLI, use `ng help` o consulte el [Angular CLI Overview and Command Reference](https://angular.io/cli) pagína.

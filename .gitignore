@@ -30,8 +30,8 @@
 ./Frontend/history/*
 
 # Miscellaneous
-./Frontend/angular/cache
-./Frontend/sass-cache/
+/Frontend/.angular/cache
+/Frontend/.sass-cache/
 /Frontend/connect.lock
 /Frontend/coverage
 /Frontend/libpeerconnection.log
@@ -39,5 +39,5 @@
 /Frontend/typings
 
 # System files
-./Frontend/DS_Store
+/Frontend/.DS_Store
 /Frontend/Thumbs.db
