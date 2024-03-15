@@ -16,13 +16,19 @@ Notas:
 - Eliminar productos
 - Solicitar confirmacion al eliminar el producto
 
-### Como Ejecutar
-- Disponer ya subida la base de datos
+### Como Ejecutar Localmente
+- Subir la base de datos que se encuentra unas lineas hacia abajo.
 - actualizar los ajustes de connexion en ./src/Infrastructure/Config/ConnectionString
+- crea la carpeta vendor con el siguiente comando en el directorio raiz.
+```bash
+composer install
+```
 - Lanzar el servidor web integrado php dentro de la carpeta ./src
 ```bash
 php -S localhost:8000
 ```
+- Es importante aclarar que el proyecto fue escrito en php versión 8.3.3 y composer versión 2.7.2.
+
 
 ## SQL DB
 ```sql
@@ -106,7 +112,7 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 | :-------- | :------- | :------------------------- |
 | producto | `ProductDTO` | Edita un producto que coincida con su código.|
 
-#### Edita Productos
+#### Eliminar Productos
 
 ```http
   DELETE api/product
