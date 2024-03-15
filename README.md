@@ -16,6 +16,14 @@ Notas:
 - Eliminar productos
 - Solicitar confirmacion al eliminar el producto
 
+### Como Ejecutar
+- Disponer ya subida la base de datos
+- actualizar los ajustes de connexion en ./src/Infrastructure/Config/ConnectionString
+- Lanzar el servidor web integrado php dentro de la carpeta ./src
+```bash
+php -S localhost:8000
+```
+
 ## SQL DB
 ```sql
 CREATE DATABASE IF NOT EXISTS `shop`;
@@ -67,12 +75,46 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 
 ```
 
-### Como Ejecutar
-- Lanzar el servidor web integrado php dentro de la carpeta ./src
-```bash
-php -S localhost:8000
+## Enpoints
+#### Mostrar Productos
+
+```http
+  GET /
 ```
 
+| Parametro | Tipo     | Descrición                |
+| :-------- | :------- | :------------------------- |
+| <empty> | `Product` | Genera una peticion Get para obtener los productos |
+
+#### Agregar Productos
+
+```http
+  POST api/product
+```
+
+| Parametro | Tipo     | Descrición                |
+| :-------- | :------- | :------------------------- |
+| producto | `ProductDTO` | Agrega un nuevo producto |
+
+#### Editar Productos
+
+```http
+  PUT api/product
+```
+
+| Parametro | Tipo     | Descrición                |
+| :-------- | :------- | :------------------------- |
+| producto | `ProductDTO` | Edita un producto que coincida con su código.|
+
+#### Edita Productos
+
+```http
+  DELETE api/product
+```
+
+| Parametro | Tipo     | Descrición                |
+| :-------- | :------- | :------------------------- |
+| code | `string` | Elimina elemento por su código.|
 
 # PRUEBA PARTE 2
 

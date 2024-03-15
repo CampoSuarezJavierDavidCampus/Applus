@@ -57,60 +57,66 @@ class ProductModel{
     }
 
     //*CREATE PRODUCT
-    public function create(ProductDTO $product):bool|null{        
-        $res = Database::Access(function(\PDO $conn, ProductDTO $product){
+    public function create(ProductDTO $product):int|null{        
+        $res = Database::Access(function(...$args){         
+            $product = $args['params'][0];
            //ADD DATA
-            $stmt = $conn->prepare($this->CreateSQL);
+            $stmt = $args['conn']->prepare($this->CreateSQL);
             $stmt->bindParam(':code',$product->code);
             $stmt->bindParam(':name',$product->name);
             $stmt->bindParam(':categoryId',$product->categoryId);
             $stmt->bindParam(':price',$product->price);
-            $stmt->bindParam(':createAt',new DateTime());
-            $stmt->bindParam(':updateAt',new DateTime());
+            $stmt->bindParam(':createAt',(new DateTime())->format('Y-m-d H:i:s'));
+            $stmt->bindParam(':updateAt',(new DateTime())->format('Y-m-d H:i:s'));
             $stmt->execute();        
+            $res = $stmt->rowCount(); 
             //CLEAN
             $stmt = null;
-            $conn = null;
+            $args['conn'] = null;
             //RETURN
-            return true;
+            return $res;
         },$product);
         return $res;
             
     }
 
     //*EDIT PRODUCT
-    public function edit(ProductDTO $product):bool|null{        
-        $res = Database::Access(function(\PDO $conn, ProductDTO $product){         
+    public function edit(ProductDTO $product):int|null{        
+        $res = Database::Access(function(...$args){         
+            $product = $args['params'][0];
             //ADD DATA
-            $stmt = $conn->prepare($this->EditSQL);
+            $stmt = $args['conn']->prepare($this->EditSQL);
             $stmt->bindParam(':code',$product->code);
             $stmt->bindParam(':name',$product->name);
             $stmt->bindParam(':categoryId',$product->categoryId);
             $stmt->bindParam(':price',$product->price);
-            $stmt->bindParam(':updateAt',new DateTime());
-            $stmt->execute();        
+            $stmt->bindParam(':updateAt',(new DateTime())->format('Y-m-d H:i:s'));
+            $stmt->execute();     
+            $res = $stmt->rowCount();   
             //CLEAN
             $stmt = null;
-            $conn = null;
+            $args['conn'] = null;
             //RETURN
-            return true;
+            return $res;
          },$product);
          return $res;
     }
 
     //*DELETE PRODUCT
-    public function delete(string $code):bool|null{        
-        $res = Database::Access(function(\PDO $conn, string $code){            
-        //ADD DATA
-        $stmt = $conn->prepare($this->DeleteSQL);
-        $stmt->bindParam(':code',$code);       
-        $stmt->execute();        
-        //CLEAN
-        $stmt = null;
-        $conn = null;
-        //RETURN
-        return true;    
-        },$code);
+    public function delete(string $code):int|null{                
+        $res = Database::Access(function(...$args){   
+            $code = $args['params'][0];        
+            //ADD DATA
+            $stmt = $args['conn']->prepare($this->DeleteSQL);
+            $stmt->bindParam(':code',$code);       
+            $stmt->execute();
+            $res = $stmt->rowCount();
+            //CLEAN
+            $stmt = null;
+            $args['conn'] = null;
+            //RETURN        
+            return $res;    
+        },$code);        
         return $res;        
     }
 

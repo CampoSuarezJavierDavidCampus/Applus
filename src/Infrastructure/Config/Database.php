@@ -11,10 +11,11 @@ class Database{
         self::$db;
         
         try {
-            return call_user_func_array($executeRequest,[self::$db->conn,$args]);
+            return call_user_func_array($executeRequest,['conn'=>self::$db->conn,'params'=>$args]);
         } catch (\Throwable $th) {
-            return null;            
+            
             echo var_dump($th->getMessage());    
+            return null;                        
         }
     }
     private function set_connection_string(array $setting){ 

@@ -10,8 +10,14 @@ $method = match($_SERVER["REQUEST_METHOD"]){
     'DELETE'=>HTTP_Verbs::DELETE,
 };
 //! Router
-$uri = trim($_SERVER["REQUEST_URI"],'/');
-
+$uri = explode('?',trim(strtolower($_SERVER["REQUEST_URI"]),'/'))[0];
 $router = Router::CreateRouter();
-echo $router->call_route($uri,$method);
+$res = $router->call_route($uri,$method);
+if (str_starts_with($uri,'api')) {
+    header('Content-Type: application/json');
+    echo json_encode($res);
+}else{
+    echo $res;
+}
+
 
