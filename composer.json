@@ -5,7 +5,11 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Jcampo1502\\Applus\\": "src/"
+            "Jcampo1502\\Applus\\": "src/",
+            "App\\":"src/App/",
+            "Core\\":"src/Core/",
+            "Infrastructure\\":"src/Infrastructure/"
+
         }
     },
     "authors": [
