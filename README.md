@@ -67,8 +67,11 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 
 ```
 
-
-
+### Como Ejecutar
+- Lanzar el servidor web integrado php
+```bash
+php -S localhost:8000
+```
 
 
 # PRUEBA PARTE 2
