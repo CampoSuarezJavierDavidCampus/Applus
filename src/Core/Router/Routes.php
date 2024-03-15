@@ -5,11 +5,20 @@ use Core\Router\Route;
 
 
 return [
-    (new Route())
-        ->set_name("")
-        ->set_HTTP_Verb(HTTP_Verbs::GET)
-        ->set_action(function (){
-            return (new ProductController)->show();
-        }
+    Route::factory(
+        "", HTTP_Verbs::GET,
+        fn ()=>(new ProductController)->show()
+    ),
+    Route::factory(
+        "app/product", HTTP_Verbs::POST,
+        fn ()=>(new ProductController)->create()
+    ),
+    Route::factory(
+        "app/product", HTTP_Verbs::PUT,
+        fn ()=>(new ProductController)->edit()
+    ),
+    Route::factory(
+        "app/product", HTTP_Verbs::DELETE,
+        fn ()=> (new ProductController)->delete()
     )
 ];

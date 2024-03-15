@@ -6,8 +6,20 @@ use Core\Interfaces\Router\IRoute;
 
 class Route implements IRoute{
     private string $_name;
-    private HTTP_Verbs $_verb;   
-    private  $action ;   
+    private HTTP_Verbs $_verb;
+    private  $_action;
+    
+    static function factory(
+        string|null $name = null,
+        HTTP_Verbs|null $verb = null,
+        $action = null
+    ):IRoute{
+        $route = new Route();
+        if(!is_null($name)) $route->set_name($name);
+        if(!is_null($verb)) $route->set_HTTP_Verb($verb);
+        if(!is_null($action)) $route->set_action($action);
+        return $route;
+    }
 
     public function set_name(string $name):IRoute{
         $this->_name = $name;
@@ -24,13 +36,13 @@ class Route implements IRoute{
     }
 
     public function set_action(callable $callback):IRoute{
-        $this->action = $callback;
+        $this->_action = $callback;
         return $this;
     }
 
     public function get_action(){
 
-        return call_user_func($this->action);
+        return call_user_func($this->_action);
     }
 
 }
