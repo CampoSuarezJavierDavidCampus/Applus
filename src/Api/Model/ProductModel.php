@@ -1,8 +1,8 @@
 <?php
-namespace App\Model;
+namespace Api\Model;
 
 use Infrastructure\Config\Database;
-use App\DTO\ProductDTO;
+use Api\DTO\ProductDTO;
 use Core\Entities\Category;
 use Core\Entities\Product;
 use DateTime;

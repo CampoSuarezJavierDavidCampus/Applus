@@ -1,9 +1,9 @@
 <?php
-namespace App\Controller;
+namespace Api\Controller;
 
 use Infrastructure\Scripts\ValidateInputs;
-use App\DTO\ProductDTO;
-use App\Model\ProductModel;
+use Api\DTO\ProductDTO;
+use Api\Model\ProductModel;
 
 class ProductController{
     use ValidateInputs;

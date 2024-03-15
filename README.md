@@ -85,7 +85,7 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 #### Mostrar Productos
 
 ```http
-  GET /
+  GET /product
 ```
 
 | Parametro | Tipo     | Descrición                |
@@ -95,7 +95,7 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 #### Agregar Productos
 
 ```http
-  POST api/product
+  POST /product
 ```
 
 | Parametro | Tipo     | Descrición                |
@@ -105,7 +105,7 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 #### Editar Productos
 
 ```http
-  PUT api/product
+  PUT /product
 ```
 
 | Parametro | Tipo     | Descrición                |
@@ -115,7 +115,7 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 #### Eliminar Productos
 
 ```http
-  DELETE api/product
+  DELETE /product
 ```
 
 | Parametro | Tipo     | Descrición                |

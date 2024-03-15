@@ -6,7 +6,7 @@
     "autoload": {
         "psr-4": {
             "Jcampo1502\\Applus\\": "src/",
-            "App\\":"src/App",
+            "Api\\":"src/Api",
             "Core\\":"src/Core",
             "Infrastructure\\":"src/Infrastructure"
 

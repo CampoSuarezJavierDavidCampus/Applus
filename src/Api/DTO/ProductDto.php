@@ -1,5 +1,5 @@
 <?php
-namespace App\DTO;
+namespace Api\DTO;
 
 use DateTime;
 
