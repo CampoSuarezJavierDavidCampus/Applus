@@ -1,0 +1,31 @@
+<button class="btn-danger btn m-4" (click)="showList = false" >Crear nuevo producto</button>
+<table class="table" *ngIf="showList == true" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Fecha de creacion</th>
+      <th scope="col">Ultima modificación</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of this.products$| async ">
+      <td scope="row">{{product.code}}</td>
+      <td scope="row">{{product.name}}</td>
+      <td scope="row">{{product.category.name}}</td>
+      <td scope="row">{{product.price}}</td>
+      <td scope="row">{{product.createAt.date| date:'dd/MM/yyyy HH:mm:ss'}}</td>
+      <td scope="row">{{product.updateAt.date| date:'dd/MM/yyyy HH:mm:ss'}}</td>
+      <td scope="row">
+        <button class="btn btn-danger mx-2" (click)="selectingProduct(product,'delete')">Eliminar</button>
+        <button class="btn btn-primary mx-2" (click)="selectingProduct(product,'update')">Editar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-product-create (onCancel)="Cancel()" *ngIf="showList == false" (onSave)="this.create($event)"></app-product-create>
+<app-product-edit (onCancel)="Cancel()" *ngIf="selectedProduct!=null && showUpdateForm" [product]="this.selectedProduct"></app-product-edit>

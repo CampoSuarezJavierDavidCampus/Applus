@@ -30,8 +30,8 @@
       "@shared/*":[
         "./src/app/shared/*"
       ],
-      "@modules/*":[
-        "./src/app/modules/*"
+      "@product/*":[
+        "./src/app/product/*"
       ],
       "@services/*":[
         "./src/app/services/*"

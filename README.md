@@ -23,7 +23,7 @@ Notas:
 ```bash
 composer install
 ```
-- Lanzar el servidor web integrado php dentro de la carpeta ./Backend/src
+- Lanzar el servidor web integrado php dentro de la carpeta ./Backend/src/
 ```bash
 php -S localhost:8000
 ```

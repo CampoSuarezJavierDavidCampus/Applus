@@ -15,6 +15,8 @@ $router = Router::CreateRouter();
 $res = $router->call_route($uri,$method);
 
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE');
+header('Access-Control-Allow-Headers: Origin, Content-Type');
 echo json_encode($res);
-
 
