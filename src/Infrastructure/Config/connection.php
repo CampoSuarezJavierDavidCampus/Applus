@@ -1,16 +1,16 @@
 <?php
 namespace Infrastructure\Config;
 class Connection{
-    private Database|null $_DB;
+    static private Database|null $_DB;
     
-    public function get_conn():\PDO{
-        if(is_null($this->_DB) ){
-            $this->_DB = new Database($this->_connectionString);
+    static public function get_conn():\PDO{
+        if(is_null(self::$_DB) ){
+            self::$_DB = new Database(self::$_connectionString);
         }
-        return $this->_DB->get_connection();
+        return self::$_DB->get_connection();
     }
     
-    private $_connectionString = Array(
+    static private $_connectionString = Array(
         'driver' => 'mysql',
         'host' => 'localhost',
         'username' => 'root',

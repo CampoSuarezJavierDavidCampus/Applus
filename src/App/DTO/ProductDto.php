@@ -1,15 +1,13 @@
 <?php
-namespace Core\Entities;
+namespace App\DTO;
 
 use DateTime;
 
-class Product{
+class ProductDTO{
     public function __construct(
         public string $code,
         public string $name,
-        public Category $category,
+        public int $categoryId,
         public float $price,
-        public DateTime $createAt,
-        public DateTime $updateAt
     ) {}
 }

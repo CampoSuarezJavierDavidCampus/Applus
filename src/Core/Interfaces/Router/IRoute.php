@@ -2,7 +2,6 @@
 namespace Core\Interfaces\Router;
 
 use Core\Enums\HTTP_Verbs;
-use IRender;
 
 interface IRoute{
     public function set_name(string $name):IRoute;

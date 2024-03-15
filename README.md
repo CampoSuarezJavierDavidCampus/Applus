@@ -14,7 +14,7 @@ Notas:
 - Crear productos.
 - Editar productos.
 - Eliminar productos
-- Solicitar confirmacion al eliminar
+- Solicitar confirmacion al eliminar el producto
 
 ## SQL DB
 ```sql
@@ -68,7 +68,7 @@ INSERT INTO `product` (`code`, `name`, `categoryId`, `price`) VALUES
 ```
 
 ### Como Ejecutar
-- Lanzar el servidor web integrado php
+- Lanzar el servidor web integrado php dentro de la carpeta ./src
 ```bash
 php -S localhost:8000
 ```
