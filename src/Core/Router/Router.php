@@ -12,6 +12,7 @@ class Router implements IRouter{
 
     private function __construct() { 
         $this->_routes = require_once('Routes.php');
+        
     }
 
     static function CreateRouter():IRouter{

@@ -1,14 +1,21 @@
 <?php
 namespace Infrastructure\Config;
-use Infrastructure\Config\ConnectionString as connection;
 class Database{
+    static private Database|null $db = null;
     private \PDO|null $conn = null;
-    public function __construct(array $setting) {        
-        $this->set_connection_string($setting);
-    }
-
-    public function get_connection():\PDO|null{
-        return $this->conn; 
+    private function __construct() {        
+        $this->set_connection_string(require_once('ConnectionString.php'));
+    }    
+    static public function Access(callable $executeRequest, ...$args){
+        if(is_null(self::$db))self::$db = new Database();
+        self::$db;
+        
+        try {
+            return call_user_func_array($executeRequest,[self::$db->conn,$args]);
+        } catch (\Throwable $th) {
+            return null;            
+            echo var_dump($th->getMessage());    
+        }
     }
     private function set_connection_string(array $setting){ 
         $this->conn = null;

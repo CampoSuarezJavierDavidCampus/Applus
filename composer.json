@@ -8,7 +8,7 @@
             "Jcampo1502\\Applus\\": "src/",
             "App\\":"src/App",
             "Core\\":"src/Core",
-            "Infrastructure\\":"/src/Infrastructure"
+            "Infrastructure\\":"src/Infrastructure"
 
         }
     },
