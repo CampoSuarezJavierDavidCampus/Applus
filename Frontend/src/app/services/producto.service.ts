@@ -24,7 +24,9 @@ export class ProductoService {
   public set Edit(product:ProductDtoInterface){
     this.http.put(this.apiUrl,product);
   }
-  public set Delete(code:string){
-    this.http.delete(`${this.apiUrl}?code=${code}`);
+  public set Delete(id:string){
+    let params = new HttpParams();
+    params = params.set('code',id);
+    this.http.delete(this.apiUrl,{params});
   }
 }

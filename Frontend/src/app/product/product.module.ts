@@ -6,6 +6,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { ProductoService } from '@services/producto.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductConfirmComponent } from './pages/product-confirm/product-confirm.component';
 
 
 
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ProductEditComponent,
     ProductCreateComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductConfirmComponent
   ],
   imports: [
     CommonModule,

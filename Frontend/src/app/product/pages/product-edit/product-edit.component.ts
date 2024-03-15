@@ -11,20 +11,27 @@ import { Observable } from 'rxjs';
   templateUrl: './product-edit.component.html',
   styleUrl: './product-edit.component.css'
 })
-export class ProductEditComponent {
+export class ProductEditComponent implements OnInit{
+
   @Input({required:true}) product!:ProductDtoInterface;
   @Output() onChange = new EventEmitter<ProductDtoInterface>;
   @Output() onCancel = new EventEmitter;
   message:string = '';
   productForm = new FormGroup<ProductFormInterface>({
-    code : new FormControl(this.product.code,{nonNullable:true,validators:Validators.required}),
-    name : new FormControl(this.product.name,{nonNullable:true,validators:Validators.required}),
-    categoryId : new FormControl(this.product.categoryId,{nonNullable:true,validators:Validators.required}),
-    price : new FormControl(this.product.price,{nonNullable:true,validators:Validators.required}),
+    code : new FormControl('',{nonNullable:true,validators:Validators.required}),
+    name : new FormControl('',{nonNullable:true,validators:Validators.required}),
+    categoryId : new FormControl(0,{nonNullable:true,validators:Validators.required}),
+    price : new FormControl(0,{nonNullable:true,validators:Validators.required}),
   })
 
-  save(e:SubmitEvent){
-    e.preventDefault();
+  ngOnInit(): void {
+    this.productForm.controls.code.setValue(this.product.code);
+    this.productForm.controls.name.setValue(this.product.name);
+    this.productForm.controls.categoryId.setValue(this.product.categoryId);
+    this.productForm.controls.price.setValue(this.product.price);
+  }
+
+  save(){
     if(this.productForm.invalid){
       this.message = "campo incorrecto"
       return;

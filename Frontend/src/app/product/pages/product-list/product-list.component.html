@@ -1,5 +1,5 @@
-<button class="btn-danger btn m-4" (click)="showList = false" >Crear nuevo producto</button>
-<table class="table" *ngIf="showList == true" >
+<button class="btn-danger btn m-4" (click)="showCreate()" >Crear nuevo producto</button>
+<table class="table" *ngIf="states.showList" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -27,5 +27,8 @@
   </tbody>
 </table>
 
-<app-product-create (onCancel)="Cancel()" *ngIf="showList == false" (onSave)="this.create($event)"></app-product-create>
-<app-product-edit (onCancel)="Cancel()" *ngIf="selectedProduct!=null && showUpdateForm" [product]="this.selectedProduct"></app-product-edit>
+<app-product-create (onCancel)="Cancel()" *ngIf="states.showCreateForm" (onSave)="this.create($event)"></app-product-create>
+
+<app-product-edit (onCancel)="Cancel()" *ngIf="states.showUpdateForm" [product]="this.selectedProduct!" (onChange)="this.update($event)"></app-product-edit>
+
+<app-product-confirm (onCancel)="Cancel()" (onDelete)="this.delete($event)" *ngIf="states.showConfirm" [code]="this.selectedProduct!.code"></app-product-confirm>

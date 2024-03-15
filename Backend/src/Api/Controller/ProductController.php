@@ -15,7 +15,7 @@ class ProductController{
 
     public function show(){
         //Obtener la data
-        $data = $this->model->show();        
+        $data = $this->model->show();
         return $data;
     }
     public function create():int|null{
@@ -42,11 +42,13 @@ class ProductController{
         else http_response_code(205);
         return $res;
     }
-    public function delete():int{
+    public function delete(){
+
         $code = $this->sanitizarTextInput($_GET['code']);
         $res = $this->model->delete($code);
-        if(is_null($res))http_response_code(404);
-        else http_response_code(204);          
-        return $res;
+          /* if(is_null($res))http_response_code(404);
+          else http_response_code(204);
+          return $res; */
+
     }
 }

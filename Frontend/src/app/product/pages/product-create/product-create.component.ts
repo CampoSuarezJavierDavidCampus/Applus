@@ -19,8 +19,7 @@ export class ProductCreateComponent {
     price : new FormControl(0,{nonNullable:true,validators:Validators.required}),
   })
 
-  save(e:SubmitEvent){
-    e.preventDefault();
+  save(){
     if(this.productForm.invalid){
       this.message = "campo incorrecto"
       return;

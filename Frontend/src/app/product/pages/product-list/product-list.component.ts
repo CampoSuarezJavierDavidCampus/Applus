@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductInterface } from '@domain/interfaces/product.interface';
 import { ProductDtoInterface } from '@domain/interfaces/productDto.interface';
+import { State } from '@domain/models/state';
 import { ProductoService } from '@services/producto.service';
 import { Observable } from 'rxjs';
 
@@ -9,12 +10,12 @@ import { Observable } from 'rxjs';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
+
+
+
 export class ProductListComponent implements OnInit {
   products$:Observable<ProductInterface[]>|null = null;
-  showList:boolean = true;
-  showCreateForm:boolean = false;
-  showUpdateForm:boolean = false;
-  showConfirm:boolean = false;
+  states:State = (new State());
   selectedProduct:ProductDtoInterface|null = null;
 
 
@@ -22,40 +23,50 @@ export class ProductListComponent implements OnInit {
     private service:ProductoService
   ) {}
   ngOnInit(): void {
+    this.loadProducts();
+    this.states.showList = true;
+  }
+
+  loadProducts(){
     this.products$ = this.service.Data;
   }
 
   create(product:ProductDtoInterface){
     this.service.Create = product;
+    this.loadProducts();
+    this.Cancel();
   }
 
   update(product:ProductDtoInterface){
     this.service.Edit = product;
+    this.loadProducts();
+    this.Cancel();
   }
 
   delete(code:string){
+    console.log(code);
     this.service.Delete = code;
+    this.loadProducts();
+    this.Cancel();
   }
 
   Cancel(){
-    this.showList = true;
-    this.showCreateForm = false;
-    this.showUpdateForm = false;
-    this.showConfirm = false;
+    this.states = new State();
+    this.states.showList= true;
+  }
+
+  showCreate(){
+    this.states = new State();
+    this.states.showCreateForm= true;
   }
 
   selectingProduct(product:ProductInterface, type:string){
+    this.states = new State();
 
     if(type == 'delete'){
-      this.showList = false;
-      this.showCreateForm = false;
-      this.showUpdateForm = false;
-      this.showConfirm = true;
+      this.states.showConfirm= true;
     }else{
-      this.showList = false;
-      this.showCreateForm = false;
-      this.showUpdateForm = true;
-      this.showConfirm = false;
+      this.states.showUpdateForm= true;
     }
     this.selectedProduct = {
       code : product.code,
