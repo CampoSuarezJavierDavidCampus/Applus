@@ -13,6 +13,7 @@ $method = match($_SERVER["REQUEST_METHOD"]){
 $uri = explode('?',trim(strtolower($_SERVER["REQUEST_URI"]),'/'))[0];
 $router = Router::CreateRouter();
 $res = $router->call_route($uri,$method);
+
 header('Content-Type: application/json');
 echo json_encode($res);
 

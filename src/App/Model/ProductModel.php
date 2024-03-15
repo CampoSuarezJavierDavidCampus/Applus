@@ -7,7 +7,8 @@ use Core\Entities\Category;
 use Core\Entities\Product;
 use DateTime;
 
-class ProductModel{
+class ProductModel{    
+
     private string $ShowSQL = "SELECT 
         /*product*/
         p.code as product_code, 
@@ -39,15 +40,15 @@ class ProductModel{
 
     //*SHOW PRODUCT LIST
     public function show():array|null{                
-        $res = Database::Access(function(\PDO $conn){
+        $res = Database::Access(function(...$args){
             //GET DATA
-            $stmt = $conn->prepare($this->ShowSQL);
+            $stmt = $args['conn']->prepare($this->ShowSQL);
             $stmt->execute();
             $datos = $this->transformData($stmt->fetchAll());
             
             //CLEAN
             $stmt = null;
-            $conn = null;
+            $args['conn'] = null;
             
             return $datos;
         });            
