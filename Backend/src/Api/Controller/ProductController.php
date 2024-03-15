@@ -46,9 +46,9 @@ class ProductController{
 
         $code = $this->sanitizarTextInput($_GET['code']);
         $res = $this->model->delete($code);
-          /* if(is_null($res))http_response_code(404);
+        if(is_null($res))http_response_code(404);
           else http_response_code(204);
-          return $res; */
+          return $res;
 
     }
 }
